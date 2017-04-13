@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectTestScript : MonoBehaviour {
-    public float objectSpeed = -.2f;
+    public float objectSpeed = .4f;
     // Use this for initialization
     void Start () {
 		
