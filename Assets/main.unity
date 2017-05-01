@@ -580,7 +580,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25a895b4c7f692d439b94c8f79a5f660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacle: {fileID: 1085565714997922, guid: 6390a607abc6a2c4fb5f0243097036e5, type: 2}
+  rock: {fileID: 1120380776683808, guid: 23c4de85f48616c4d84d8927ea1ff99d, type: 2}
+  tree: {fileID: 0}
+  fallenTree: {fileID: 0}
   powerup: {fileID: 100004, guid: 4f727d3d592de88449863f0b3dc4c82c, type: 2}
 --- !u!4 &1956144153
 Transform:
@@ -718,7 +720,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1089274563
+  randomSeed: -1108144894
   InitialModule:
     serializedVersion: 3
     enabled: 1

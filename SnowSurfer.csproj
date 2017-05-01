@@ -77,9 +77,11 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Collision.cs" />
     <Compile Include="Assets\Scripts\GroundControl.cs" />
+    <Compile Include="Assets\Scripts\GroundVariables.cs" />
     <Compile Include="Assets\Scripts\ObjectTestScript.cs" />
     <Compile Include="Assets\Scripts\ObstacleScript.cs" />
     <Compile Include="Assets\Scripts\PowerupScript.cs" />
+    <Compile Include="Assets\Scripts\RockScript.cs" />
     <Compile Include="Assets\Scripts\SnowControl.cs" />
     <Compile Include="Assets\Scripts\SpawnScript.cs" />
   </ItemGroup>

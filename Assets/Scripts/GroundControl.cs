@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GroundControl : MonoBehaviour {
     public Renderer rend;
+   // public GameObject gameObject;
     // Use this for initialization
     void Start () {
         rend = GetComponent<Renderer>();
@@ -11,11 +12,12 @@ public class GroundControl : MonoBehaviour {
     }
 
     //Material texture offset rate
-    float speed = .2f;
+    float speed = (float) ((GroundVariables.gameSpeed*10*(20.0/9.0) + (1.0/9.0))/10.0);
 
     //Offset the material texture at a constant rate
     void Update()
     {
+        
         float offset = Time.time * speed;
         rend.material.mainTextureOffset = new Vector2(0, -offset);
     }
