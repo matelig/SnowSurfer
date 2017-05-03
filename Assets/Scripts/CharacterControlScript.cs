@@ -28,7 +28,7 @@ public class CharacterControlScript : MonoBehaviour
             {
                 Debug.Log("Probuje skoczyc");
                 moveDirection.y = jumpSpeed;
-              animator.Play("jump0");
+              animator.Play("Armature|jump");
              
             }
         }
