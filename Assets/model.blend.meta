@@ -70,6 +70,7 @@ ModelImporter:
     4300000: Cube_000
     7400000: Default Take
     7400002: jump
+    7400004: jump0
     9500000: //RootNode
     11100000: //RootNode
     13700000: Cube_000
@@ -95,10 +96,10 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: Default Take
-      takeName: Default Take
-      firstFrame: 0
-      lastFrame: 249
+      name: jump0
+      takeName: jump
+      firstFrame: 12
+      lastFrame: 70
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

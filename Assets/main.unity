@@ -202,7 +202,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400038, guid: 43cf90aaa080ca14eba6062c3a0ef22f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.88
+      value: -8.36
       objectReference: {fileID: 0}
     - target: {fileID: 400038, guid: 43cf90aaa080ca14eba6062c3a0ef22f, type: 3}
       propertyPath: m_LocalRotation.x
@@ -890,11 +890,12 @@ Animation:
   m_GameObject: {fileID: 2040672716}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400002, guid: 43cf90aaa080ca14eba6062c3a0ef22f, type: 3}
+  m_Animation: {fileID: 7400004, guid: 43cf90aaa080ca14eba6062c3a0ef22f, type: 3}
   m_Animations:
-  - {fileID: 7400002, guid: 43cf90aaa080ca14eba6062c3a0ef22f, type: 3}
+  - {fileID: 7400004, guid: 43cf90aaa080ca14eba6062c3a0ef22f, type: 3}
+  - {fileID: 7400004, guid: 43cf90aaa080ca14eba6062c3a0ef22f, type: 3}
   m_WrapMode: 0
-  m_PlayAutomatically: 1
+  m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
 --- !u!1 &2116489632
