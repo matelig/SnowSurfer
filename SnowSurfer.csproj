@@ -77,6 +77,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\CharacterControlScript.cs" />
     <Compile Include="Assets\Scripts\Collision.cs" />
+    <Compile Include="Assets\Scripts\DayNightCycle.cs" />
     <Compile Include="Assets\Scripts\GroundControl.cs" />
     <Compile Include="Assets\Scripts\GroundVariables.cs" />
     <Compile Include="Assets\Scripts\ObjectTestScript.cs" />
