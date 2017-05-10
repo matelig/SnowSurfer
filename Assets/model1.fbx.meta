@@ -154,8 +154,8 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|jump
       takeName: Armature|jump
-      firstFrame: 0
-      lastFrame: 70
+      firstFrame: 9
+      lastFrame: 50
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
