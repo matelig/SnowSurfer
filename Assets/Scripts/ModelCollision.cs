@@ -7,6 +7,7 @@ public class ModelCollision : MonoBehaviour {
 
     public static int points = 0;
     public Text text;
+    CharacterControlScript controlScript;
     // Use this for initialization
     private void Awake()
     {
@@ -14,6 +15,8 @@ public class ModelCollision : MonoBehaviour {
     }
     void Start () {
         text = GameObject.Find("Coins").GetComponent<Text>();
+        GameObject thePlayer = GameObject.Find("model1");
+        controlScript = thePlayer.GetComponent<CharacterControlScript>();
     }
 	
 	// Update is called once per frame
@@ -34,6 +37,12 @@ public class ModelCollision : MonoBehaviour {
         {
             GroundVariables.stop = true;
             Time.timeScale = 0;
+            controlScript.collided = true;
+        }
+        if ((collision.gameObject.tag == "Wall"))
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            controlScript.collided = true;
         }
     }
 }

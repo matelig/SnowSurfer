@@ -9,6 +9,8 @@ public class CharacterControlScript : MonoBehaviour
     public float gravity = 18.0F;
     private Vector3 moveDirection = Vector3.zero;
     private Animation animator;
+    private float rotate = 0;
+    public bool collided = false; 
     // Use this for initialization
     void Start()
     {
@@ -22,7 +24,6 @@ public class CharacterControlScript : MonoBehaviour
         if (controller.isGrounded)
         {
             moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
-            moveDirection = transform.TransformDirection(moveDirection);
             moveDirection *= speed;
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
@@ -34,5 +35,25 @@ public class CharacterControlScript : MonoBehaviour
         }
         moveDirection.y -= gravity * Time.deltaTime;
         controller.Move(moveDirection * Time.deltaTime);
+        if (!collided)
+        {
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                if (rotate < 30)
+                    rotate += 2;
+                transform.rotation = Quaternion.Euler(0, rotate, 0);
+            }
+            else if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                if (rotate > -30)
+                    rotate -= 2;
+                transform.rotation = Quaternion.Euler(0, rotate, 0);
+            }
+            else
+            {
+                rotate = Mathf.Lerp(rotate, 0, 0.15f);
+                transform.rotation = Quaternion.Euler(0, rotate, 0);
+            }
+        }
     }
 }
