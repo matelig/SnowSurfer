@@ -1,10 +1,14 @@
 fileFormatVersion: 2
 guid: 25a895b4c7f692d439b94c8f79a5f660
-timeCreated: 1492072884
+timeCreated: 1494496418
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - rock: {fileID: 1120380776683808, guid: 23c4de85f48616c4d84d8927ea1ff99d, type: 2}
+  - tree: {fileID: 100004, guid: 4f727d3d592de88449863f0b3dc4c82c, type: 2}
+  - fallenTree: {instanceID: 0}
+  - coin: {fileID: 1263731814992660, guid: b44c3f30e81ebdf47b2d360a3e7aae5d, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
