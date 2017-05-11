@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class SpawnScript : MonoBehaviour
 {
@@ -7,16 +8,22 @@ public class SpawnScript : MonoBehaviour
     public GameObject snowman;
     public GameObject fallenTree;
     public GameObject coin;
-
+    private Text text;
     float timeElapsed = 0;
     float spawnCycle = 0.5f;
 	bool alreadySpawned;
 
+    private void Start()
+    {
+        text = GameObject.Find("Time").GetComponent<Text>();
+    }
+
     void Update()
     {
+        text.text = string.Format("{0:ss} seconds {0:fff} milliseconds", System.TimeSpan.FromSeconds(Time.time));
+       
         timeElapsed += Time.deltaTime;
 		if (timeElapsed > spawnCycle) {
-
 			alreadySpawned = false;
 			for (int i = 0; i < 3; i++) {
 				GameObject temp;

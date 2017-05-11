@@ -78,6 +78,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\GroundSpeed.cs" />
     <Compile Include="Assets\Scripts\CharacterControlScript.cs" />
     <Compile Include="Assets\Scripts\CoinRotate.cs" />
     <Compile Include="Assets\Scripts\CoinTranslate.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Assets\Scripts\DayNightCycle.cs" />
     <Compile Include="Assets\Scripts\GroundControl.cs" />
     <Compile Include="Assets\Scripts\GroundVariables.cs" />
+    <Compile Include="Assets\Scripts\ModelCollision.cs" />
     <Compile Include="Assets\Scripts\ObjectTestScript.cs" />
     <Compile Include="Assets\Scripts\ObstacleScript.cs" />
     <Compile Include="Assets\Scripts\PowerupScript.cs" />
@@ -94,6 +96,7 @@
     <Compile Include="Assets\Scripts\SnowmanCollision.cs" />
     <Compile Include="Assets\Scripts\SnowmanTranslate.cs" />
     <Compile Include="Assets\Scripts\SpawnScript.cs" />
+    <Compile Include="Assets\UpdatePoints.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Japanese Coin\Environment\HDR_Readme.txt" />

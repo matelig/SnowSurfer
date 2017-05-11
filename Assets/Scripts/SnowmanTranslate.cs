@@ -11,6 +11,7 @@ public class SnowmanTranslate : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.Translate(0, 0, -GroundVariables.gameSpeed, Space.World);
+        if (!GroundVariables.stop)
+            transform.Translate(0, 0, -GroundVariables.gameSpeed, Space.World);
 	}
 }

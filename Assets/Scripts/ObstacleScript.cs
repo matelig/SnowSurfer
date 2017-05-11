@@ -7,6 +7,7 @@ public class ObstacleScript : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(0, objectSpeed, 0);
+        if (!GroundVariables.stop)
+            transform.Translate(0, objectSpeed, 0);
     }
 }

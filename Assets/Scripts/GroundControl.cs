@@ -12,12 +12,13 @@ public class GroundControl : MonoBehaviour {
     }
 
     //Material texture offset rate
-    float speed = (float) ((GroundVariables.gameSpeed*10*(20.0/9.0) + (1.0/9.0))/10.0);
-
+    
+    
     //Offset the material texture at a constant rate
-    void Update()
+    void FixedUpdate()
     {
-        
+        float speed = (float)(GroundVariables.gameSpeed * 2.285 + 0.013);
+
         float offset = Time.time * speed;
         rend.material.mainTextureOffset = new Vector2(0, -offset);
     }
