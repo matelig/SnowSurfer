@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using UnityEngine.UI;
 
 public class SpawnScript : MonoBehaviour
 {
@@ -8,51 +7,88 @@ public class SpawnScript : MonoBehaviour
     public GameObject snowman;
     public GameObject fallenTree;
     public GameObject coin;
-    private Text text;
-    float timeElapsed = 0;
-    float spawnCycle = 0.5f;
-	bool alreadySpawned;
 
-    private void Start()
-    {
-        text = GameObject.Find("Time").GetComponent<Text>();
-    }
+    float timeElapsed = 0;
+    float coinSpawnCycle = 0.5f;
+
+	float[] positions = {-3,-1.5f,0,1.5f,3};
+	static int coinPosition = -1;
+	static int spawnObstacle= 0;
+	bool higher=false;
 
     void Update()
     {
-        text.text = string.Format("{0:ss} seconds {0:fff} milliseconds", System.TimeSpan.FromSeconds(Time.time));
-       
-        timeElapsed += Time.deltaTime;
-		if (timeElapsed > spawnCycle) {
-			alreadySpawned = false;
-			for (int i = 0; i < 3; i++) {
-				GameObject temp;
-				int objectType = Random.Range (0, 4);
-				if (!alreadySpawned && i == 2) {
-
-				} else if (objectType == 0) { //spawn coin
-					alreadySpawned = true;
-					temp = (GameObject)Instantiate (coin);
-					Vector3 pos = temp.transform.position;
-					temp.transform.position = new Vector3 (3 * (i - 1), pos.y, pos.z);
-				} else if (objectType == 1) { //spawn obstacle 1
-					temp = (GameObject)Instantiate (rock);
-					Vector3 pos = temp.transform.position;
-					temp.transform.position = new Vector3 (3 * (i - 1), pos.y, pos.z);
-				} else if (objectType == 2) {//spawn obstacle 2
-					temp = (GameObject)Instantiate (snowman);//tree);
-					Vector3 pos = temp.transform.position;
-					temp.transform.position = new Vector3 (3 * (i - 1), pos.y, pos.z);
-				} else if (objectType == 3) {//spawn obstacle 3
-					temp = (GameObject)Instantiate (rock);//fallenTree);
-					Vector3 pos = temp.transform.position;
-					temp.transform.position = new Vector3 (3 * (i - 1), pos.y, pos.z);
-				} else {
-					alreadySpawned = true;
-				}
-
-				timeElapsed -= spawnCycle;
-			}
+		if (coinPosition == -1) {
+			coinPosition = Random.Range (0, 5);
 		}
+        timeElapsed += Time.deltaTime;
+		if (timeElapsed > coinSpawnCycle) {
+			spawnObstacle++;
+			GameObject temp;
+				
+			int positionDelta;
+			positionDelta = Random.Range (0, 3);
+			if (positionDelta == 0) {
+				if (coinPosition != 0) {
+					coinPosition--;
+				}
+			} else if (positionDelta == 2) {
+				if (coinPosition != 4) {
+					coinPosition++;
+				}
+			}
+
+			if (spawnObstacle>1) {
+				GameObject tempObstacle;
+				int numberOfObstacles = Random.Range (1, 5);
+				if (numberOfObstacles > 1){// == 3||numberOfObstacles==2) {
+					int skipPosition = Random.Range(0, 3);
+					higher = true;
+					for (int i = 0; i < 3; i++) {
+						if (numberOfObstacles == 3 || skipPosition != i) {
+							int obstacleType = Random.Range (0, 2);
+							if (obstacleType == 0 || (positions[i * 2] >= positions[coinPosition] - 2 && positions[i * 2] <= positions[coinPosition] + 2))
+								tempObstacle = (GameObject)Instantiate (rock);
+							else
+								tempObstacle = (GameObject)Instantiate (snowman);
+							Vector3 pos = tempObstacle.transform.position;
+							tempObstacle.transform.position = new Vector3 (positions [i * 2], pos.y, pos.z);
+						}
+					}
+				} else if (numberOfObstacles == 1) {
+					int obstaclePosition = Random.Range (-1, 2)*3;
+					if (obstaclePosition > coinPosition - 2 && obstaclePosition < coinPosition + 2) {//spawn under coin
+						higher = true;
+						tempObstacle = (GameObject)Instantiate (rock);
+						Vector3 pos = tempObstacle.transform.position;
+						tempObstacle.transform.position = new Vector3 (positions[coinPosition], pos.y, pos.z);
+					} else {
+						int obstacleType = Random.Range (0, 2);
+						if(obstacleType==0)
+							tempObstacle = (GameObject)Instantiate (rock);
+						else
+							tempObstacle = (GameObject)Instantiate (snowman);
+						Vector3 pos = tempObstacle.transform.position;
+						if(coinPosition<2)
+							tempObstacle.transform.position = new Vector3 (3, pos.y, pos.z);
+						else
+							tempObstacle.transform.position = new Vector3 (-3, pos.y, pos.z);
+					}
+				}
+				spawnObstacle = 0;
+			}
+
+			temp = (GameObject)Instantiate (coin);
+			Vector3 coinPos = temp.transform.position;
+			if(higher==true)
+				temp.transform.position = new Vector3 (positions[coinPosition], coinPos.y+2, coinPos.z);
+			else
+				temp.transform.position = new Vector3 (positions[coinPosition], coinPos.y, coinPos.z);
+			higher=false;
+
+			timeElapsed -= coinSpawnCycle;
+		}
+
     }
 }
+
