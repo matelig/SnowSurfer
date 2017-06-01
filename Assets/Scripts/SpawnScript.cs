@@ -38,7 +38,7 @@ public class SpawnScript : MonoBehaviour
 				}
 			}
 
-			if (spawnObstacle>1) {
+			if (spawnObstacle>3) {
 				GameObject tempObstacle;
 				int numberOfObstacles = Random.Range (1, 5);
 				if (numberOfObstacles > 1){// == 3||numberOfObstacles==2) {

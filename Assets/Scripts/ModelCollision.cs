@@ -10,6 +10,7 @@ public class ModelCollision : MonoBehaviour
     public Text text;
     CharacterControlScript controlScript;
     private Animation animator;
+    public int score = 0;
     // Use this for initialization
     private void Awake()
     {
@@ -64,6 +65,7 @@ public class ModelCollision : MonoBehaviour
         GroundVariables.stop = true;
         Time.timeScale = 0;
         controlScript.collided = true;
+        score = ShowTime.playTime + 2*int.Parse(text.text);
     }
     private IEnumerator WaitForAnimation(Animation animation)
     {

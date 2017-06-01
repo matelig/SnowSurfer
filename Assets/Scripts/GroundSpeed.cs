@@ -19,6 +19,7 @@ public class GroundSpeed : MonoBehaviour {
             GroundVariables.gameSpeed += .02f;
             
         }
+        
 	}
 
     
