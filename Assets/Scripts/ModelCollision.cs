@@ -1,16 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ModelCollision : MonoBehaviour
 {
-
-    public static int points = 0;
-    public Text text;
     CharacterControlScript controlScript;
     private Animation animator;
-    public int score = 0;
+    //SGameObject asd;
     // Use this for initialization
     private void Awake()
     {
@@ -18,10 +16,11 @@ public class ModelCollision : MonoBehaviour
     }
     void Start()
     {
-        text = GameObject.Find("Coins").GetComponent<Text>();
+        
         GameObject thePlayer = GameObject.Find("model1");
         controlScript = thePlayer.GetComponent<CharacterControlScript>();
         animator = thePlayer.GetComponent<Animation>();
+        //asd = GameObject.Find("Coins");
     }
 
     // Update is called once per frame
@@ -35,17 +34,14 @@ public class ModelCollision : MonoBehaviour
 
         if ((collision.gameObject.tag == "Coin"))
         {
-            points++;
+            GameScript.actualizeCoins();
             Destroy(collision.gameObject);
-            text.text = points.ToString();
-
         }
         if ((collision.gameObject.tag == "Snowman") || (collision.gameObject.tag == "Object"))
         {
             Debug.Log("Kolizja!");
             StartCoroutine(Collide());
-      
-      
+
             //GroundVariables.stop = true;
             //Time.timeScale = 0;
             //controlScript.collided = true;
@@ -65,7 +61,9 @@ public class ModelCollision : MonoBehaviour
         GroundVariables.stop = true;
         Time.timeScale = 0;
         controlScript.collided = true;
-        score = ShowTime.playTime + 2*int.Parse(text.text);
+
+        //asd.SetActive(false);
+        //SceneManager.LoadScene(4);
     }
     private IEnumerator WaitForAnimation(Animation animation)
     {
