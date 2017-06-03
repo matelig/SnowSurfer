@@ -375,14 +375,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 154568}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a58e52bd5f6612b4587f282ec79dd75f, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ded01634ab837d49a08e630a16909d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secondsPerMinute: 0.625
+  secondsPerMinute: 0.05
   startTime: 12
-  showGUI: 1
-  latitudeAngle: 45
-  sunTilt: {fileID: 479536}
+  orbitAngle: {fileID: 0}
+  stars: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
