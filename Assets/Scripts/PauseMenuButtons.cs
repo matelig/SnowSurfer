@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenuButtons : MonoBehaviour {
 
@@ -9,6 +10,10 @@ public class PauseMenuButtons : MonoBehaviour {
     public CanvasGroup buttonsGroup;
     [SerializeField]
     public CanvasGroup highscoresGroup;
+    [SerializeField]
+    public CanvasGroup gameOverGroup;
+    [SerializeField]
+    public CanvasGroup timeCoinsGroup;
     private GameScript gameScript;
 
 	public void ResumeButton()
@@ -38,7 +43,7 @@ public class PauseMenuButtons : MonoBehaviour {
         highscoresGroup.blocksRaycasts = false;
     }
 
-    internal void HideHighscoresMenu()
+    public void HideHighscoresMenu()
     {
         highscoresGroup.alpha = 0;
         highscoresGroup.interactable = false;
@@ -48,6 +53,19 @@ public class PauseMenuButtons : MonoBehaviour {
     public void QuitButton()
     {
         Application.Quit();
+    }
+
+    public void RestartButton()
+    {
+        SceneManager.LoadScene(1);
+        GroundVariables.stop = false;
+        Time.timeScale = 1;
+        ShowTime.playTime = 0;
+    }
+
+    public void BackToMenuButton()
+    {
+        SceneManager.LoadScene(0);
     }
 
     public void ShowPauseMenu()
@@ -64,4 +82,20 @@ public class PauseMenuButtons : MonoBehaviour {
         buttonsGroup.blocksRaycasts = false;
     }
 
+    public void ShowGameOverMenu()
+    {
+        GameObject game = GameObject.Find("GameController");
+        gameScript = game.GetComponent<GameScript>();
+        gameScript.calculateScore();
+        gameOverGroup.alpha = 1;
+        gameOverGroup.interactable = true;
+        gameOverGroup.blocksRaycasts = true;
+    }
+
+    public void HideTimeCoinsGroup()
+    {
+        timeCoinsGroup.alpha = 0;
+        timeCoinsGroup.interactable = false;
+        timeCoinsGroup.blocksRaycasts = false;
+    }
 }

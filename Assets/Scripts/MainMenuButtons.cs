@@ -13,6 +13,9 @@ public class MainMenuButtons : MonoBehaviour {
     public void StartGameButton()
     {
         SceneManager.LoadScene(1);
+        GroundVariables.stop = false;
+        Time.timeScale = 1;
+        ShowTime.playTime = 0;
     }
 
     public void TutorialButton()

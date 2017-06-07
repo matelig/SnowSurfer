@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,14 +21,10 @@ public class GameScript : MonoBehaviour {
         controlScript = thePlayer.GetComponent<CharacterControlScript>();
         GameObject buttonsPanel = GameObject.Find("pauseMenu");
         pmbScript = buttonsPanel.GetComponent<PauseMenuButtons>();
-        pmbScript.HidePauseMenu();
-        pmbScript.HideHighscoresMenu();
     }
 	
 	// Update is called once per frame
 	void Update () {
-        score = ShowTime.playTime + 2 * int.Parse(coinsText.text);
-        pointsText.text = score.ToString();
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (!controlScript.collided)
@@ -50,6 +47,12 @@ public class GameScript : MonoBehaviour {
                 }
             }
         }
+    }
+
+    public void calculateScore()
+    {
+        score = ShowTime.playTime + 2 * int.Parse(coinsText.text);
+        pointsText.text = score.ToString();
     }
 
     public static void actualizeCoins() {

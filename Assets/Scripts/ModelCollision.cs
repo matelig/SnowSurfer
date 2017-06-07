@@ -8,6 +8,7 @@ public class ModelCollision : MonoBehaviour
 {
     CharacterControlScript controlScript;
     private Animation animator;
+    private PauseMenuButtons pmbScript;
     //SGameObject asd;
     // Use this for initialization
     private void Awake()
@@ -16,11 +17,11 @@ public class ModelCollision : MonoBehaviour
     }
     void Start()
     {
-        
         GameObject thePlayer = GameObject.Find("model1");
         controlScript = thePlayer.GetComponent<CharacterControlScript>();
         animator = thePlayer.GetComponent<Animation>();
-        //asd = GameObject.Find("Coins");
+        GameObject buttonsPanel = GameObject.Find("pauseMenu");
+        pmbScript = buttonsPanel.GetComponent<PauseMenuButtons>();
     }
 
     // Update is called once per frame
@@ -61,9 +62,8 @@ public class ModelCollision : MonoBehaviour
         GroundVariables.stop = true;
         Time.timeScale = 0;
         controlScript.collided = true;
-
-        //asd.SetActive(false);
-        //SceneManager.LoadScene(4);
+        pmbScript.ShowGameOverMenu();
+        pmbScript.HideTimeCoinsGroup();
     }
     private IEnumerator WaitForAnimation(Animation animation)
     {

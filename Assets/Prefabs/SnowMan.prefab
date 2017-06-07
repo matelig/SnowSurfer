@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4447268539948766}
-  - component: {fileID: 33375824816263636}
+  - component: {fileID: 33897259105830880}
   - component: {fileID: 23035919743765210}
   - component: {fileID: 95323731670107210}
   - component: {fileID: 114878179114215732}
@@ -77,7 +77,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33375824816263636
+--- !u!33 &33897259105830880
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
