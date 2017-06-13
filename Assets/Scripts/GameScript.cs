@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -55,13 +53,11 @@ public class GameScript : MonoBehaviour {
         pointsText.text = score.ToString();
     }
 
-    public Boolean saveHighscore()
+    public Boolean SaveHighscore()
     {
         Boolean isNewHighscore = false;
-        int[] previousHighscores = getPreviousHighscores();
+        int[] previousHighscores = GetPreviousHighscores();
         int[] temp = new int[6];
-
-
         for (int i = 0; i < 5; i++)
         {
             temp[i] = previousHighscores[i];
@@ -69,19 +65,14 @@ public class GameScript : MonoBehaviour {
         temp[5] = score;
         Array.Sort(temp);
         Array.Reverse(temp);
-
+   
         for (int i = 0; i < 5; i++)
             if (temp[i] == score)
                 isNewHighscore = true;
-      
-        saveUpdatedHighscores(temp);
-  
-    
-        
-
+        SaveUpdatedHighscores(temp);
         return isNewHighscore;
     }
-    private void saveUpdatedHighscores(int[] results)
+    private void SaveUpdatedHighscores(int[] results)
     {
        PlayerPrefs.SetInt("Score0", results[0]);
         PlayerPrefs.SetInt("Score1", results[1]);
@@ -90,20 +81,9 @@ public class GameScript : MonoBehaviour {
         PlayerPrefs.SetInt("Score4", results[4]);
     }
 
-    private int[] updateHighscores(int score, int i, int[]previousHighscores)
-    {
-        int[] result = new int[5];
-        for (int j = 0; j < 5; j++)
-            result[j] = previousHighscores[j];
-        result[i] = score;
-        for (int k = i + 1; k < 5; k++, i++)
-            result[k] = previousHighscores[i];
 
-        return result;
 
-    }
-
-    private int[] getPreviousHighscores()
+    public int[] GetPreviousHighscores()
     {
         int[] result = new int[5];
        
@@ -116,7 +96,7 @@ public class GameScript : MonoBehaviour {
         return result;
     }
 
-    public static void actualizeCoins() {
+    public static void ActualizeCoins() {
         points++;
         coinsText.text = points.ToString();
     }
