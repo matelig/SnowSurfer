@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
-public class PauseMenuButtons : MonoBehaviour {
+using UnityEngine.UI;
+public class PauseMenuButtons : MonoBehaviour
+{
 
     [SerializeField]
     public CanvasGroup buttonsGroup;
@@ -15,11 +16,14 @@ public class PauseMenuButtons : MonoBehaviour {
     [SerializeField]
     public CanvasGroup timeCoinsGroup;
     private GameScript gameScript;
+    [SerializeField]
+    public Text isHighscore;
 
-	public void ResumeButton()
+    public void ResumeButton()
     {
         GameObject game = GameObject.Find("GameController");
         gameScript = game.GetComponent<GameScript>();
+        isHighscore = GameObject.Find("Highscore").GetComponent<Text>();
         HidePauseMenu();
         GroundVariables.stop = false;
         Time.timeScale = 1;
@@ -87,6 +91,7 @@ public class PauseMenuButtons : MonoBehaviour {
         GameObject game = GameObject.Find("GameController");
         gameScript = game.GetComponent<GameScript>();
         gameScript.calculateScore();
+        isHighscore.gameObject.SetActive(gameScript.saveHighscore());
         gameOverGroup.alpha = 1;
         gameOverGroup.interactable = true;
         gameOverGroup.blocksRaycasts = true;
