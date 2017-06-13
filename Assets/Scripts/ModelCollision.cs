@@ -35,7 +35,7 @@ public class ModelCollision : MonoBehaviour
 
         if ((collision.gameObject.tag == "Coin"))
         {
-            GameScript.actualizeCoins();
+            GameScript.ActualizeCoins();
             Destroy(collision.gameObject);
         }
         if ((collision.gameObject.tag == "Snowman") || (collision.gameObject.tag == "Object"))

@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
-public class PauseMenuButtons : MonoBehaviour {
+using UnityEngine.UI;
+public class PauseMenuButtons : MonoBehaviour
+{
 
     [SerializeField]
     public CanvasGroup buttonsGroup;
@@ -15,11 +16,29 @@ public class PauseMenuButtons : MonoBehaviour {
     [SerializeField]
     public CanvasGroup timeCoinsGroup;
     private GameScript gameScript;
+    [SerializeField]
+    public Text isHighscore;
+    [SerializeField]
+    public Text score0;
+    [SerializeField]
+    public Text score1;
+    [SerializeField]
+    public Text score2;
+    [SerializeField]
+    public Text score3;
+    [SerializeField]
+    public Text score4;
 
-	public void ResumeButton()
+    public void ResumeButton()
     {
         GameObject game = GameObject.Find("GameController");
         gameScript = game.GetComponent<GameScript>();
+        isHighscore = GameObject.Find("Highscore").GetComponent<Text>();
+        score0 = GameObject.Find("Score0").GetComponent<Text>();
+        score1 = GameObject.Find("Score1").GetComponent<Text>();
+        score2 = GameObject.Find("Score2").GetComponent<Text>();
+        score3 = GameObject.Find("Score3").GetComponent<Text>();
+        score4 = GameObject.Find("Score4").GetComponent<Text>();
         HidePauseMenu();
         GroundVariables.stop = false;
         Time.timeScale = 1;
@@ -33,8 +52,21 @@ public class PauseMenuButtons : MonoBehaviour {
         highscoresGroup.alpha = 1;
         highscoresGroup.interactable = true;
         highscoresGroup.blocksRaycasts = true;
+        SetHighscores();
     }
 
+    private void SetHighscores()
+    {
+        GameObject game = GameObject.Find("GameController");
+        gameScript = game.GetComponent<GameScript>();
+        int[] results = gameScript.GetPreviousHighscores();
+        score0.text = "1. " + results[0];
+        score1.text = "2. " + results[1];
+        score2.text = "3. " + results[2];
+        score3.text = "4. " + results[3];
+        score4.text = "5. " + results[4];
+
+    }
     public void BackButton()
     {
         ShowPauseMenu();
@@ -87,6 +119,7 @@ public class PauseMenuButtons : MonoBehaviour {
         GameObject game = GameObject.Find("GameController");
         gameScript = game.GetComponent<GameScript>();
         gameScript.calculateScore();
+        isHighscore.gameObject.SetActive(gameScript.SaveHighscore());
         gameOverGroup.alpha = 1;
         gameOverGroup.interactable = true;
         gameOverGroup.blocksRaycasts = true;
