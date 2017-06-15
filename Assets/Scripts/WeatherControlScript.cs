@@ -10,7 +10,6 @@ public class WeatherControlScript : MonoBehaviour {
     public double period=0.001f;
     public Weather currentWeather = Weather.Snowy;
     private Weather lastWeather;
-    private bool changed = true;
     private System.Random randomGenerator;
     public enum Weather
     {
@@ -77,7 +76,6 @@ public class WeatherControlScript : MonoBehaviour {
         int index = randomGenerator.Next(0, Enum.GetNames(typeof(Weather)).Length-1);
         lastWeather = currentWeather;
         currentWeather = (Weather)index;
-        changed = true;
     }
 
 }

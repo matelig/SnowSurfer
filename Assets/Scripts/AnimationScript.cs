@@ -12,9 +12,9 @@ public class AnimationScript : MonoBehaviour {
     public Vector3 rotationAngle;
     public float rotationSpeed;
 
-    public float floatSpeed;
+    private float floatSpeed;
     private bool goingUp = true;
-    public float floatRate;
+    private float floatRate;
     private float floatTimer;
    
     public Vector3 startScale;
@@ -27,7 +27,7 @@ public class AnimationScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+        floatSpeed = Random.Range(0.05f, 0.15f);
 	}
 	
 	// Update is called once per frame
