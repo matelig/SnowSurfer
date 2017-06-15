@@ -9,6 +9,7 @@ TagManager:
   - Coin
   - Snowman
   - Wall
+  - Bonus
   layers:
   - Default
   - TransparentFX

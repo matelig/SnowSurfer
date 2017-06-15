@@ -97,8 +97,15 @@ public class GameScript : MonoBehaviour {
     }
 
     public static void ActualizeCoins() {
-        points++;
+        points = points + GroundVariables.coinMultipler;
         coinsText.text = points.ToString();
     }
+
+    public static void resetCoins()
+    {
+        points = 0;
+        score = 0;
+    }
+    
 
 }

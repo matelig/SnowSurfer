@@ -45,21 +45,26 @@ public class AnimationScript : MonoBehaviour {
             if(isFloating)
             {
                 floatTimer += Time.deltaTime;
-                Vector3 moveDir = new Vector3(0.0f, 0.0f, floatSpeed);
-                transform.Translate(moveDir);
-
-                if (goingUp && floatTimer >= floatRate)
+                Vector3 moveDir = new Vector3(0.0f, floatSpeed, 0.0f);
+                transform.Translate(moveDir,Space.World);
+                if (!GroundVariables.stop)
                 {
-                    goingUp = false;
-                    floatTimer = 0;
-                    floatSpeed = -floatSpeed;
-                }
+                    if (goingUp && transform.position.y >= 4.0f)
+                    {
+                        goingUp = false;
+                        floatTimer = 0;
+                        floatSpeed = -floatSpeed;
+                    }
 
-                else if(!goingUp && floatTimer >= floatRate)
+                    else if (!goingUp && transform.position.y <= 1.0f)
+                    {
+                        goingUp = true;
+                        floatTimer = 0;
+                        floatSpeed = -floatSpeed;
+                    }
+                } else
                 {
-                    goingUp = true;
-                    floatTimer = 0;
-                    floatSpeed = +floatSpeed;
+                    floatSpeed = 0.0f;
                 }
             }
 

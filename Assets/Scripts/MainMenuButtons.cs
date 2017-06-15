@@ -25,6 +25,9 @@ public class MainMenuButtons : MonoBehaviour {
     {
         SceneManager.LoadScene(1);
         GroundVariables.stop = false;
+        GameScript.resetCoins();
+        GroundVariables.coinMultipler = 1;
+        GroundVariables.normalControll = true;
         Time.timeScale = 1;
         ShowTime.playTime = 0;
     }
