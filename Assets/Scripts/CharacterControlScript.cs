@@ -26,38 +26,78 @@ public class CharacterControlScript : MonoBehaviour
         {
             CharacterController controller = GetComponent<CharacterController>();
 
-            if (controller.isGrounded)
+            if (GroundVariables.normalControll)
             {
-                moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
-                moveDirection *= speed;
-                if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+                if (controller.isGrounded)
                 {
-                    Debug.Log("Probuje skoczyc");
-                    moveDirection.y = jumpSpeed;
-                    animator.Play("Armature|jump");
+                    moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
+                    moveDirection *= speed;
+                    if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+                    {
+                        Debug.Log("Probuje skoczyc");
+                        moveDirection.y = jumpSpeed;
+                        animator.Play("Armature|jump");
 
+                    }
+                }
+                moveDirection.y -= gravity * Time.deltaTime;
+                controller.Move(moveDirection * Time.deltaTime);
+                if (!collided)
+                {
+                    if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+                    {
+                        if (rotate < 30)
+                            rotate += 2;
+                        transform.rotation = Quaternion.Euler(0, rotate, 0);
+                    }
+                    else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+                    {
+                        if (rotate > -30)
+                            rotate -= 2;
+                        transform.rotation = Quaternion.Euler(0, rotate, 0);
+                    }
+                    else
+                    {
+                        rotate = Mathf.Lerp(rotate, 0, 0.15f);
+                        transform.rotation = Quaternion.Euler(0, rotate, 0);
+                    }
                 }
             }
-            moveDirection.y -= gravity * Time.deltaTime;
-            controller.Move(moveDirection * Time.deltaTime);
-            if (!collided)
+            else
             {
-                if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+                if (controller.isGrounded)
                 {
-                    if (rotate < 30)
-                        rotate += 2;
-                    transform.rotation = Quaternion.Euler(0, rotate, 0);
+                    moveDirection = new Vector3(-Input.GetAxis("Horizontal"), 0, 0);
+                    moveDirection *= speed;
+                    if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+                    {
+                        Debug.Log("Probuje skoczyc");
+                        moveDirection.y = jumpSpeed;
+                        animator.Play("Armature|jump");
+
+                    }
                 }
-                else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+                moveDirection.y -= gravity * Time.deltaTime;
+                controller.Move(moveDirection * Time.deltaTime);
+                if (!collided)
                 {
-                    if (rotate > -30)
-                        rotate -= 2;
-                    transform.rotation = Quaternion.Euler(0, rotate, 0);
-                }
-                else
-                {
-                    rotate = Mathf.Lerp(rotate, 0, 0.15f);
-                    transform.rotation = Quaternion.Euler(0, rotate, 0);
+                    if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+                    {
+                        if (rotate < 30)
+                            rotate += 2;
+                        transform.rotation = Quaternion.Euler(0, rotate, 0);
+                    }
+                    else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+                    {
+                        if (rotate > -30)
+                            rotate -= 2;
+                        transform.rotation = Quaternion.Euler(0, rotate, 0);
+                    }
+                    else
+                    {
+                        rotate = Mathf.Lerp(rotate, 0, 0.15f);
+                        transform.rotation = Quaternion.Euler(0, rotate, 0);
+                    }
                 }
             }
         }

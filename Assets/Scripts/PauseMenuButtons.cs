@@ -90,6 +90,9 @@ public class PauseMenuButtons : MonoBehaviour
     public void RestartButton()
     {
         SceneManager.LoadScene(1);
+        GameScript.resetCoins();
+        GroundVariables.coinMultipler = 1;
+        GroundVariables.normalControll = true;
         GroundVariables.stop = false;
         Time.timeScale = 1;
         ShowTime.playTime = 0;
