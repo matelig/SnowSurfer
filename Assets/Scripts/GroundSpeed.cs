@@ -15,8 +15,11 @@ public class GroundSpeed : MonoBehaviour {
         i++;
         if (i==600)
         {
-            i = 0;
-            GroundVariables.gameSpeed += .02f;
+            if (!GroundVariables.stop)
+            {
+                i = 0;
+                GroundVariables.gameSpeed += .02f;
+            }
             
         }
         

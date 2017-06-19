@@ -11,6 +11,8 @@ public class MainMenuButtons : MonoBehaviour {
     [SerializeField]
     public CanvasGroup menuGroup;
     [SerializeField]
+    public CanvasGroup tutorialGroup;
+    [SerializeField]
     public Text score0;
     [SerializeField]
     public Text score1;
@@ -25,6 +27,7 @@ public class MainMenuButtons : MonoBehaviour {
     {
         SceneManager.LoadScene(1);
         GroundVariables.stop = false;
+        GroundVariables.gameSpeed = 0.3f;
         GameScript.resetCoins();
         GroundVariables.coinMultipler = 1;
         GroundVariables.normalControll = true;
@@ -34,7 +37,12 @@ public class MainMenuButtons : MonoBehaviour {
 
     public void TutorialButton()
     {
-
+        menuGroup.alpha = 0;
+        menuGroup.interactable = false;
+        menuGroup.blocksRaycasts = false;
+        tutorialGroup.alpha = 1;
+        tutorialGroup.interactable = true;
+        tutorialGroup.blocksRaycasts = true;
     }
 
     public void HighScoresButton()
@@ -79,6 +87,16 @@ public class MainMenuButtons : MonoBehaviour {
         highscoresGroup.alpha = 0;
         highscoresGroup.interactable = false;
         highscoresGroup.blocksRaycasts = false;
+    }
+
+    public void TutorialBackButton()
+    {
+        menuGroup.alpha = 1;
+        menuGroup.interactable = true;
+        menuGroup.blocksRaycasts = true;
+        tutorialGroup.alpha = 0;
+        tutorialGroup.interactable = false;
+        tutorialGroup.blocksRaycasts = false;
     }
 
     public void QuitGameButton()

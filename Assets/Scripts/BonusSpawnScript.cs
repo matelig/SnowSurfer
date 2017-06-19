@@ -20,7 +20,7 @@ public class BonusSpawnScript : MonoBehaviour {
 	
     IEnumerator waitForSeconds()
     {
-        yield return new WaitForSeconds(Random.Range(1, 2));
+        yield return new WaitForSeconds(Random.Range(20, 30));
         Instantiate(bonus);
         isSpawning = false;
     }
