@@ -94,6 +94,7 @@ public class PauseMenuButtons : MonoBehaviour
         GroundVariables.coinMultipler = 1;
         GroundVariables.normalControll = true;
         GroundVariables.stop = false;
+        GroundVariables.gameSpeed = 0.3f;
         Time.timeScale = 1;
         ShowTime.playTime = 0;
     }
