@@ -55,7 +55,7 @@ public class ModelCollision : MonoBehaviour
         {
             GetComponent<AudioSource>().Play();
             Destroy(collision.gameObject);
-            bonusNumber = Random.Range(1,3);
+            bonusNumber = Random.Range(1,4);
             ShowProgressBar();
             switch (bonusNumber) {
                 case 1:
